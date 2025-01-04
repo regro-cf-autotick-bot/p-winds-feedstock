@@ -12,16 +12,16 @@ source:
 build:
   noarch: python
 
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - numpy
     - scipy
     - astropy
@@ -34,6 +34,7 @@ test:
     - pytest
   requires:
     - pytest
+    - python {{ python_min }}
   source_files:
     - tests/
 
